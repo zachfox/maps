@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('leaflet-base App', () => {
+describe('maps App', () => {
   let page: AppPage;
 
   beforeEach(() => {
