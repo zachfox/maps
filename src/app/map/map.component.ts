@@ -29,6 +29,8 @@ export class MapComponent implements OnInit {
     //    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     const svg = d3.select(this.map.getPanes().overlayPane).append('svg');
     const g = svg.append('g').attr('class', 'leaflet-zoom-hide');
+   
+
 
     const that = this;
     d3.json('assets/us-states.json')
@@ -51,12 +53,20 @@ export class MapComponent implements OnInit {
             topLeft = bounds[0],
             bottomRight = bounds[1];
 
+          // Customize overlay features which don't depend on the data.  
+          // g.append('g')
+          //     .attr('fill','#345')
+          // g.append('path')
+          //     .attr('stroke','#444')
+
           svg.attr('width', bottomRight[0] - topLeft[0])
             .attr('height', bottomRight[1] - topLeft[1])
             .style('left', topLeft[0] + 'px')
-            .style('top', topLeft[1] + 'px');
+            .style('top', topLeft[1] + 'px')
+            .style('fill','None');
 
-          g.attr('transform', 'translate(' + -topLeft[0] + ',' + -topLeft[1] + ')');
+          g.attr('transform', 'translate(' + -topLeft[0] + ',' + -topLeft[1] + ')')
+           .style('stroke','#345'); 
 
           feature.attr('d', path);
         }
