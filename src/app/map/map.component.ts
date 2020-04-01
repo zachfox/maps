@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
 
     this.map = L.map('map', {
       center: [36.8282, -95.5795],
-      zoom: 4
+      zoom:4
     });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -42,6 +42,7 @@ export class MapComponent implements OnInit {
           .enter().append('path');
 
         this.map.on('viewreset', reset);
+        this.map.on('zoom', reset);
         reset();
 
         // Reposition the SVG to cover the features.
